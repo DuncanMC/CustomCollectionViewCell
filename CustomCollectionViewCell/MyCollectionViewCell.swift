@@ -11,7 +11,6 @@ import UIKit
 class MyCollectionViewCell: UICollectionViewCell {
     var color: UIColor! = nil
 
-    var hue: CGFloat = 0
     var layer1 = CALayer()
     var layer2 = CALayer()
 
@@ -39,7 +38,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         // Color each cell's layer some random hue (change to whatever color you desire.)
         // If you don't use HSB, save the R/G/B values of your color and use those,
         // with lower alpha values, for the extra layers.
-        hue = CGFloat.random(in: 0...360)
+        let hue = CGFloat.random(in: 0...360)
         layer.masksToBounds = false
         setBackgroundColor(UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1))
         contentView.layer.cornerRadius = 30
