@@ -13,6 +13,8 @@
 		AEE459CB257F0391007BA519 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE459C9257F0391007BA519 /* Main.storyboard */; };
 		AEE459CD257F0396007BA519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE459CC257F0396007BA519 /* Assets.xcassets */; };
 		AEE459D0257F0396007BA519 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE459CE257F0396007BA519 /* LaunchScreen.storyboard */; };
+		AEE459D8257F03F8007BA519 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE459D7257F03F8007BA519 /* MyCollectionViewCell.swift */; };
+		AEE459DA257F040D007BA519 /* MyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE459D9257F040D007BA519 /* MyCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AEE459CC257F0396007BA519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEE459CF257F0396007BA519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEE459D1257F0396007BA519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEE459D7257F03F8007BA519 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		AEE459D9257F040D007BA519 /* MyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				AEE459C3257F0391007BA519 /* AppDelegate.swift */,
 				AEE459C5257F0391007BA519 /* SceneDelegate.swift */,
 				AEE459C7257F0391007BA519 /* ViewController.swift */,
+				AEE459D7257F03F8007BA519 /* MyCollectionViewCell.swift */,
+				AEE459D9257F040D007BA519 /* MyCollectionViewController.swift */,
 				AEE459C9257F0391007BA519 /* Main.storyboard */,
 				AEE459CC257F0396007BA519 /* Assets.xcassets */,
 				AEE459CE257F0396007BA519 /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			files = (
 				AEE459C8257F0391007BA519 /* ViewController.swift in Sources */,
 				AEE459C4257F0391007BA519 /* AppDelegate.swift in Sources */,
+				AEE459D8257F03F8007BA519 /* MyCollectionViewCell.swift in Sources */,
+				AEE459DA257F040D007BA519 /* MyCollectionViewController.swift in Sources */,
 				AEE459C6257F0391007BA519 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
