@@ -15,10 +15,25 @@ class MyCollectionViewCell: UICollectionViewCell {
     var layer1 = CALayer()
     var layer2 = CALayer()
 
-    @IBOutlet weak var customLabel: UILabel!
-    override func awakeFromNib() {
 
-        contentView.layer.cornerRadius = 30
+    // Use this function to set the cell's background color.
+    // (You can't set the view's background color, since we
+    // Don't clip the view to it's bounds.
+    func setBackgroundColor(_ color: UIColor)  {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
+        contentView.layer.backgroundColor = color.cgColor
+        layer1.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.25).cgColor
+        layer2.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.125).cgColor
+    }
+
+    @IBOutlet weak var customLabel: UILabel!
+
+    //Do The initial setup once the cell is loaded.
+    //Note that t
+    override func awakeFromNib() {
         contentView.layer.masksToBounds = false
 
         // Color each cell's layer some random hue (change to whatever color you desire.)
@@ -26,8 +41,8 @@ class MyCollectionViewCell: UICollectionViewCell {
         // with lower alpha values, for the extra layers.
         hue = CGFloat.random(in: 0...360)
         layer.masksToBounds = false
-        color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-        contentView.layer.backgroundColor = color.cgColor
+        setBackgroundColor(UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1))
+        contentView.layer.cornerRadius = 30
         layer1.cornerRadius = 30
         layer2.cornerRadius = 30
         //Make the first extra layer have the same color as the cell's layer, but with alpha 0.25
