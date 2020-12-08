@@ -10,7 +10,7 @@ import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
 
-    var contentCornerRadius: CGFloat = 0 {
+    public var contentCornerRadius: CGFloat = 0 {
         didSet {
             contentView.layer.cornerRadius = contentCornerRadius
             sizeLayerFrames()
@@ -18,26 +18,32 @@ class MyCollectionViewCell: UICollectionViewCell {
 
     }
 
-    var fraction: CGFloat = 0.075 { // What percent to shrink & shift the faded layers down (0.075 = 7.5%)
+    public var fraction: CGFloat = 0.075 { // What percent to shrink & shift the faded layers down (0.075 = 7.5%)
         didSet {
             sizeLayerFrames()
         }
     }
-    var color: UIColor! = nil
-    var layerMask =   CAShapeLayer()
-    var layer1 = CALayer()
-    var layer2 = CALayer()
+    private var layerMask =   CAShapeLayer()
+    private var layer1 = CALayer()
+    private var layer2 = CALayer()
+
 
     // Use this function to set the cell's background color.
-    // (You can't set the view's background color, since we
-    // Don't clip the view to it's bounds.
-    func setBackgroundColor(_ color: UIColor)  {
+    // (You can't set the view's background color, since we Don't clip the view to it's bounds.)
+
+    // Be sure to set the background color explicitly, since by default it sets a random color that will persist
+    // as the cells are recylced, causing your cell colors to move around as the user scrolls 
+    public func setBackgroundColor(_ color: UIColor)  {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
         color.getRed(&red, green: &green, blue: &blue, alpha: nil)
         contentView.layer.backgroundColor = color.cgColor
+
+        //Make the first extra layer have the same color as the cell's layer, but with alpha 0.25
         layer1.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.25).cgColor
+
+        //Make the second extra layer have the same color as the cell's layer, but with alpha 0.125
         layer2.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.125).cgColor
     }
 
@@ -48,24 +54,16 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         contentView.layer.masksToBounds = false
 
-        // Color each cell's layer some random hue (change to whatever color you desire.)
-        // If you don't use HSB, save the R/G/B values of your color and use those,
-        // with lower alpha values, for the extra layers.
+        // Color each cell's layer some random hue (change to set whatever color you desire.)
+        //For testing, use a color based on a random hue and fairly high random brightness.
         let hue = CGFloat.random(in: 0...360)
         let brightness = CGFloat.random(in: 0.8...1.0)
         layer.masksToBounds = false
         setBackgroundColor(UIColor(hue: hue, saturation: 1, brightness: brightness, alpha: 1))
-        //Uncomment the borderWidth values for layer1 and layer2 to see the parts of those layers that are visible.
-//        layer1.borderWidth = 1
-//        layer2.borderWidth = 1
 
-        //Make the first extra layer have the same color as the cell's layer, but with alpha 0.25
-        layer1.backgroundColor = UIColor(hue: hue, saturation: 1, brightness: brightness, alpha: 0.25).cgColor
 
-        //Make the second extra layer have the same color as the cell's layer, but with alpha 0.125
-        layer2.backgroundColor = UIColor(hue: hue, saturation: 1, brightness: brightness, alpha: 0.125).cgColor
-
-        //Make the inside of the shape layer white, and the outside clear
+        // Make the inside of the shape layer white (opaque), The color doesn't matter - just that the alpha value is 1
+        // and the outside clear (transparent)
         layerMask.fillColor = UIColor.white.cgColor
         layerMask.backgroundColor = UIColor.clear.cgColor
 
@@ -81,7 +79,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         layer1.mask = layerMask
     }
 
-    func sizeLayerFrames() {
+    private func sizeLayerFrames() {
         layer1.cornerRadius = contentCornerRadius
         layer2.cornerRadius = contentCornerRadius
 
